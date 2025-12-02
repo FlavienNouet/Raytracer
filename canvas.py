@@ -1,16 +1,18 @@
-# canvas.py
+import numpy as np
 
+# Mise en place de le Toile ( Canvas ) = image finale que l'on remplit pixel par pixel.
 class Canvas:
     def __init__(self, width, height):
-        self.width = width    # Cw
-        self.height = height  # Ch
+        self.width = width    # Cw => largeur
+        self.height = height  # Ch => hauteur
         self.pixels = [[(0.0, 0.0, 0.0) for _ in range(width)] for _ in range(height)]
 
+    # Mise en place de la coloration des pixels => RGB
     def put_pixel(self, x, y, color):
-        # Base du projet = La toile blanche sur laquelle on dessine.
         if 0 <= x < self.width and 0 <= y < self.height:
             self.pixels[y][x] = color
 
+    # Sauvegarde du résulat sur image fixe = PPM 
     def save(self, filename):
         """✅ AJOUTÉ : Sauvegarde l'image en PPM"""
         with open(filename, 'w') as f:

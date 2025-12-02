@@ -1,12 +1,12 @@
-# object.py
+# Création de nos sphères dans la scène
 
 class Sphere:
     def __init__(self, center, radius, color, specular, reflective):
-        self.center = center      # tuple (x, y, z)
-        self.radius = radius      # float
-        self.color = color        # tuple (R, G, B), valeurs 0-255 ou 0.0-1.0
-        self.specular = specular  # int, exponent de brillance pour Phong
-        self.reflective = reflective  # float, 0 = mat, 1 = miroir parfait
+        self.center = center     
+        self.radius = radius     
+        self.color = color       
+        self.specular = specular  
+        self.reflective = reflective  
 
     def intersect(self, O, D):
         """
