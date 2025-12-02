@@ -1,16 +1,14 @@
-#Différents type de lumières
+
 class AmbientLight:
-    def __init__(self, intensity):
+    def __init__(self, intensity):  # float unique
         self.type = 'ambient'
         self.intensity = intensity
 
-
 class PointLight:
-    def __init__(self, intensity, position):
+    def __init__(self, intensity, position):  # intensity = float
         self.type = 'point'
         self.intensity = intensity
         self.position = position
-
 
 class DirectionalLight:
     def __init__(self, intensity, direction):
