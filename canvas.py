@@ -14,7 +14,6 @@ class Canvas:
 
     # Sauvegarde du résulat sur image fixe = PPM 
     def save(self, filename):
-        """✅ AJOUTÉ : Sauvegarde l'image en PPM"""
         with open(filename, 'w') as f:
             f.write(f"P3\n{self.width} {self.height}\n255\n")
             for y in range(self.height):
@@ -25,7 +24,7 @@ class Canvas:
                     b = int(min(max(b, 0), 255))
                     f.write(f"{r} {g} {b} ")
                 f.write("\n")
-        print(f"✅ Image sauvée : {filename}")
+        print(f"✅ Image save : {filename}")
 
 def canvas_to_viewport(x, y, Vw, Vh, Cw, Ch, d):
     # Conversion de 2D vers 3D
