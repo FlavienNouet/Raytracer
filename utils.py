@@ -7,6 +7,8 @@ def dot(v, w):
 def normalize(v):
     """normalize(v) - Normalise un vecteur (longueur = 1)"""
     length = longueur(v)
+    if length == 0:
+        return (0.0, 0.0, 0.0)
     return (v[0]/length, v[1]/length, v[2]/length)
 
 def longueur(v):

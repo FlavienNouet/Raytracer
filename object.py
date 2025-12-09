@@ -10,12 +10,10 @@ class Sphere:
 
     def intersect(self, O, D):
         """
-        Intersection rayon-sphère:
+        Intersection rayon-sphère :
         P = O + tD
         ||P - C||^2 = r^2
-        Rend la distance t au point d'intersection le plus proche > 0, ou None si pas d'intersection.
-        O: origine du rayon (tuple)
-        D: direction du rayon (tuple normalisé)
+        Retourne les deux solutions (t1, t2), ou (None, None) si pas d'intersection.
         """
         OC = (O[0] - self.center[0], O[1] - self.center[1], O[2] - self.center[2])
         a = D[0]*D[0] + D[1]*D[1] + D[2]*D[2]
@@ -24,13 +22,9 @@ class Sphere:
 
         delta = b*b - 4*a*c
         if delta < 0:
-            return None
+            return None, None
 
-        t1 = (-b - delta**0.5) / (2*a)
-        t2 = (-b + delta**0.5) / (2*a)
-
-        if t1 > 0:
-            return t1
-        if t2 > 0:
-            return t2
-        return None
+        sqrt_delta = delta ** 0.5
+        t1 = (-b - sqrt_delta) / (2*a)
+        t2 = (-b + sqrt_delta) / (2*a)
+        return t1, t2
