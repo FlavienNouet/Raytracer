@@ -20,10 +20,10 @@ canvas = Canvas(Cw, Ch)
 scene = Scene()
 
 # Ajout des objets
-scene.add_object(Sphere((0,-1,3), 1, (255,0,0), 10, 0.2))   # Sphère Rouge
-scene.add_object(Sphere((2,0,4), 1, (0,255,0), 10, 0.1))   # Sphère Vert  
-scene.add_object(Sphere((-2,0,4), 1, (0,0,255), 10, 0.4))  # Shère Bleu
-scene.add_object(Sphere((0,-5001,0), 5000, (255,255,0), 1000, 0.5))  # Sol
+scene.add_object(Sphere((-2,0,5), 1, (0,85,164), 100, 0.3))   # Sphère Bleue
+scene.add_object(Sphere((0,0,5), 1, (255,255,255), 100, 0.3))   # Sphère Blanche
+scene.add_object(Sphere((2,0,5), 1, (239,65,53), 100, 0.3))   # Sphère Rouge
+scene.add_object(Sphere((0,-5001,0), 5000, (200,200,200), 1000, 0.5))  # Sol gris
 
 # Ajouter des lumières
 scene.add_light(AmbientLight(0.2))           
@@ -40,7 +40,7 @@ for x in range(-Cw // 2, Cw // 2):
         D = normalize(D)
         couleur = trace_ray(scene, O, D, 1, float('inf'), 3)
         canvas_x = x + Cw // 2
-        canvas_y = (Ch // 2 - y) - 1  # inverse l'axe Y pour afficher à l'endroit
+        canvas_y = (Ch // 2 - y)  # inverse l'axe Y pour afficher à l'endroit
         canvas.put_pixel(canvas_x, canvas_y, couleur)
 
 canvas.save('raytracer.ppm') #Enristrement de l'image finale
