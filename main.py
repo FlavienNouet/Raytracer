@@ -5,7 +5,7 @@ from scene import Scene
 from object import Sphere  
 from lights import AmbientLight, PointLight, DirectionalLight
 
-# Miee en lace de la boucle principale de notre projet => rendu d'une scène simple
+# Mise en place de la boucle principale de notre projet => rendu d'une scène simple
 
 #Paramètre de notre scène
 Cw = 800  
