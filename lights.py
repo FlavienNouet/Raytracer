@@ -1,7 +1,7 @@
 # Mise en place des lumières 
 
 class AmbientLight:
-    def __init__(self, intensity):  # Lumière ambiante
+    def __init__(self, intensity):  # Lumière ambiante => eclaire tous les objets de manière uniforme
         self.type = 'ambient'
         self.intensity = intensity
 

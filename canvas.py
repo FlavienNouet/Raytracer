@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 # Mise en place de le Toile ( Canvas ) = image finale que l'on remplit pixel par pixel.
@@ -12,8 +13,15 @@ class Canvas:
         if 0 <= x < self.width and 0 <= y < self.height:
             self.pixels[y][x] = color
 
-    # Sauvegarde du résulat sur image fixe = PPM 
+    # Sauvegarde du résultat en PPM dans le dossier ./output/
     def save(self, filename):
+        dirpath = os.path.dirname(filename)
+        if not os.path.isabs(filename) and dirpath == "":
+            dirpath = "output"
+            filename = os.path.join(dirpath, filename)
+        if dirpath:
+            os.makedirs(dirpath, exist_ok=True)
+
         with open(filename, 'w') as f:
             f.write(f"P3\n{self.width} {self.height}\n255\n")
             for y in range(self.height):
@@ -24,8 +32,8 @@ class Canvas:
                     b = int(min(max(b, 0), 255))
                     f.write(f"{r} {g} {b} ")
                 f.write("\n")
-        print(f"✅ Image save : {filename}")
+        print(f"✅ Raytracer Sauvegardé : {filename}")
 
-def canvas_to_viewport(x, y, Vw, Vh, Cw, Ch, d):
-    # Conversion de 2D vers 3D
+# Fonction qui convertie les coordonnées 2D en pixel vers la 3D du viewport
+def canvas_to_viewport(x, y, Vw, Vh, Cw, Ch, d): # Cw, Ch => Canvas width, height / Vw, Vh => Viewport width, height
     return (x * Vw / Cw, y * Vh / Ch, d)

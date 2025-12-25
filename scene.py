@@ -1,4 +1,3 @@
-# scene.py
 
 class Scene:
     def __init__(self):
@@ -15,11 +14,8 @@ class Scene:
     def set_camera(self, camera):
         self.camera = camera
 
+    # Indique quel objet est touché en premier 
     def closest_intersection(self, O, D, t_min, t_max):
-        """
-        Trouve l'intersection la plus proche entre t_min et t_max.
-        Retourne (objet, distance) ou (None, inf) s'il n'y a pas d'intersection.
-        """
         closest_t = float('inf')
         closest_obj = None
 
@@ -29,15 +25,13 @@ class Scene:
                 if t is None:
                     continue
                 if t_min <= t <= t_max and t < closest_t:
-                    closest_t = t
-                    closest_obj = obj
+                    closest_t = t  # Distance de l'objet le plus proche
+                    closest_obj = obj # Objet le plus proche 
 
         if closest_obj is None:
             return None, float('inf')
         return closest_obj, closest_t
 
+    # Intercepte l'objet le plus proche
     def intersect(self, O, D):
-        """
-        Compatibilité arrière : intersection la plus proche sur [0, +inf).
-        """
         return self.closest_intersection(O, D, 0.0, float('inf'))
