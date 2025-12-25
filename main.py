@@ -67,19 +67,24 @@ for frame in range(num_frames):
     filename = f'raytracer_{frame:02d}.ppm'
     canvas.save(filename)
 
-    # Créer un GIF à partir des images PPM dans `output/`
-    frames = []
-    for frame in range(num_frames):
-        filename = os.path.join("output", f'raytracer_{frame:02d}.ppm')
-        img = Image.open(filename)
-        frames.append(img)
+# Après avoir rendu toutes les images, créer un GIF à partir des images PPM dans `output/`
+frames = []
+for i in range(num_frames):
+    filename = os.path.join("output", f'raytracer_{i:02d}.ppm')
+    if not os.path.exists(filename):
+        raise FileNotFoundError(f"Le fichier attendu est absent : {filename}")
+    img = Image.open(filename)
+    frames.append(img)
 
+if frames:
     gif_path = os.path.join("output", 'raytracer_animation.gif')
     frames[0].save(
         gif_path,
         save_all=True,
         append_images=frames[1:],
-        duration=500, 
-        loop=0  
+        duration=500,
+        loop=0
     )
     print(f"✅ GIF créé : {gif_path}")
+else:
+    print("⚠️ Aucun frame trouvé pour créer le GIF.")
