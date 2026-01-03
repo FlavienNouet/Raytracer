@@ -12,7 +12,7 @@ Ce projet est un moteur de rendu par lancer de rayons autrement appelé ray-trac
 
 1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/EvilKroma/Dashboard_python.git
+   git clone https://github.com/FlavienNouet/Raytracer.git
    cd Dashboard_python
    ```
 
