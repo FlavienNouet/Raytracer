@@ -32,7 +32,7 @@ class Canvas:
                     b = int(min(max(b, 0), 255))
                     f.write(f"{r} {g} {b} ")
                 f.write("\n")
-        print(f"✅ Raytracer Sauvegardé : {filename}")
+        print(f"Raytracer Sauvegardé : {filename}")
 
 # Fonction qui convertie les coordonnées 2D en pixel vers la 3D du viewport
 def canvas_to_viewport(x, y, Vw, Vh, Cw, Ch, d): # Cw, Ch => Canvas width, height / Vw, Vh => Viewport width, height

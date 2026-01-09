@@ -72,7 +72,7 @@ def calcul_eclairage(scene, P, N, V, s):
 
     return i
 
-# FOncnction piur réfléchir un rayon
+# Fonction pour réfléchir un rayon
 def reflect_ray(I, N):
     factor = 2 * dot(N, I)
     return (
