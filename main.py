@@ -7,6 +7,7 @@ from object import Sphere
 from lights import AmbientLight, PointLight, DirectionalLight
 from PIL import Image # Pour la création du GIF
 import math
+import numpy as np
 
 # Mise en place de la boucle principale de notre projet => rendu d'une scène simple
 
