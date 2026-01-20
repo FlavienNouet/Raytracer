@@ -9,13 +9,11 @@ from PIL import Image # Pour la création du GIF
 import math
 import numpy as np
 
-# Mise en place de la boucle principale de notre projet => rendu d'une scène simple
-
-# Paramètre de notre scène = COnfiguration du Canvas et du Viewport
-Cw = 800  
-Ch = 600  
-Vw = 1.0  
-Vh = 0.75 
+# Paramètre de notre scène = Configuration du Canvas et du Viewport
+Cw = 800  # Largeur du canvas
+Ch = 600  # Hauteur du canvas
+Vw = 1.0  # Largeur du viewport
+Vh = 0.75 # Hauteur du viewport
 d = 1     # Distance entre la caméra et le viewport
 
 # Paramètres pour les animations de lumière
@@ -26,7 +24,7 @@ height_light = 1  # Hauteur de la lumière
 # Caméra à l'origine
 O = (0, 0, 0)
 
-# mMise en place du dossier output pour y mettre les résultats
+# Mise en place du dossier output pour y mettre les résultats
 os.makedirs("output", exist_ok=True)
 
 # Boucle de génération d'images
@@ -39,10 +37,10 @@ for frame in range(num_frames):
     scene = Scene()
     
     # Ajout des objets (les mêmes pour chaque frame)
-    scene.add_object(Sphere((-2, 0, 5), 1, (0, 85, 164), 100, 0.3))    # Sphère Bleue
-    scene.add_object(Sphere((0, 0, 5), 1, (255, 255, 255), 100, 0.3))   # Sphère Blanche
-    scene.add_object(Sphere((2, 0, 5), 1, (239, 65, 53), 100, 0.3))     # Sphère Rouge
-    scene.add_object(Sphere((0, -5001, 0), 5000, (200, 200, 200), 1000, 0.5))  # Sol gris
+    scene.add_object(Sphere((-2, 0, 5), 1, (0, 85, 164), 100, 0.3))             # Sphère Bleue
+    scene.add_object(Sphere((0, 0, 5), 1, (255, 255, 255), 100, 0.3))           # Sphère Blanche
+    scene.add_object(Sphere((2, 0, 5), 1, (239, 65, 53), 100, 0.3))             # Sphère Rouge
+    scene.add_object(Sphere((0, -5001, 0), 5000, (200, 200, 200), 1000, 0.5))   # Sol gris
     
     # Position de la lumière point sur un cercle
     angle = (frame / num_frames) * 2 * math.pi  # Angle de 0 à 2π
@@ -86,6 +84,6 @@ if frames:
         duration=500,
         loop=0
     )
-    print(f"✅ GIF créé : {gif_path}")
+    print(f"GIF créé : {gif_path}")
 else:
     print("⚠️ Aucun frame trouvé pour créer le GIF.")
