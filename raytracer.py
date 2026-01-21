@@ -1,17 +1,16 @@
 from math import inf
 from utils import dot, longueur, normalize
 
-
-# Fonction principale de lancer de rayons
+# Lance les rayons
 def trace_ray(scene, O, D, t_min, t_max, recursion_depth):
-    closest_sphere, closest_t = scene.closest_intersection(O, D, t_min, t_max) # Cherche la sphère la plus proche
+    closest_sphere, closest_t = scene.closest_intersection(O, D, t_min, t_max)
     if closest_sphere is None:
         return (0.0, 0.0, 0.0)
 
     P = (O[0] + closest_t * D[0], O[1] + closest_t * D[1], O[2] + closest_t * D[2]) # Point d'intersection
     N = normalize((P[0] - closest_sphere.center[0], P[1] - closest_sphere.center[1], P[2] - closest_sphere.center[2])) # Normale au point d'intersection
 
-    # Calcul de l'intensité de l'éclairage
+    # Intensité de l'éclairage
     intensity = calcul_eclairage(scene, P, N, (-D[0], -D[1], -D[2]), closest_sphere.specular)
     local_color = (
         closest_sphere.color[0] * intensity,
@@ -19,7 +18,7 @@ def trace_ray(scene, O, D, t_min, t_max, recursion_depth):
         closest_sphere.color[2] * intensity,
     )
 
-    # Gestion des réflexions => effet "miroir"
+    # Gestion des réflexions
     r = closest_sphere.reflective
     if recursion_depth <= 0 or r <= 0:
         return local_color
@@ -27,7 +26,7 @@ def trace_ray(scene, O, D, t_min, t_max, recursion_depth):
     R = reflect_ray((-D[0], -D[1], -D[2]), N)
     reflected_color = trace_ray(scene, P, R, 0.001, inf, recursion_depth - 1)
 
-    # Mélange de la couleur locale et de la couleur réfléchie
+    # Couleur reflétée
     return (
         local_color[0] * (1 - r) + reflected_color[0] * r,
         local_color[1] * (1 - r) + reflected_color[1] * r,
@@ -39,15 +38,15 @@ def trace_ray(scene, O, D, t_min, t_max, recursion_depth):
 def calcul_eclairage(scene, P, N, V, s):
     i = 0.0
     for light in scene.lights:
-        if light.type == 'ambient': # Lumière ambiante
+        if light.type == 'ambient':
             i += light.intensity
             continue
 
-        if light.type == 'point': # Lumière localisée
+        if light.type == 'point':
             L = (light.position[0] - P[0], light.position[1] - P[1], light.position[2] - P[2])
             t_max = longueur(L)
         else:  
-            L = light.direction # Lumière directionnelle
+            L = light.direction 
             t_max = inf
 
         if longueur(L) == 0:
@@ -62,7 +61,6 @@ def calcul_eclairage(scene, P, N, V, s):
         if n_dot_l > 0:
             i += light.intensity * n_dot_l
 
-        # Si la lumière est lisse, on a un reflet 
         if s != -1:
             R = reflect_ray(L_dir, N) 
             r_dot_v = dot(R, V)
@@ -72,8 +70,6 @@ def calcul_eclairage(scene, P, N, V, s):
 
     return i
 
-
-# Fonction de réflexion d'un rayon
 def reflect_ray(I, N):
     factor = 2 * dot(N, I)
     return (

@@ -1,19 +1,19 @@
 import os
 import numpy as np
 
-# Mise en place de le Toile ( Canvas ) = image finale que l'on remplit pixel par pixel.
+# Grille de pixels
 class Canvas:
     def __init__(self, width, height):
-        self.width = width    # Cw => largeur
-        self.height = height  # Ch => hauteur
+        self.width = width 
+        self.height = height 
         self.pixels = [[(0.0, 0.0, 0.0) for _ in range(width)] for _ in range(height)]
 
-    # Mise en place de la coloration des pixels => RGB
+    # Coloration des pixels
     def put_pixel(self, x, y, color):
         if 0 <= x < self.width and 0 <= y < self.height:
             self.pixels[y][x] = color
 
-    # Sauvegarde du résultat en PPM dans le dossier ./output/
+    # Rendus PPM
     def save(self, filename):
         dirpath = os.path.dirname(filename)
         if not os.path.isabs(filename) and dirpath == "":
@@ -34,6 +34,5 @@ class Canvas:
                 f.write("\n")
         print(f"Raytracer Sauvegardé : {filename}")
 
-# Fonction qui convertie les coordonnées 2D en pixel vers la 3D du viewport
-def canvas_to_viewport(x, y, Vw, Vh, Cw, Ch, d): # Cw, Ch => Canvas width, height / Vw, Vh => Viewport width, height
+def canvas_to_viewport(x, y, Vw, Vh, Cw, Ch, d):
     return (x * Vw / Cw, y * Vh / Ch, d)
