@@ -70,6 +70,7 @@ def calcul_eclairage(scene, P, N, V, s):
 
     return i
 
+# Direction du rayon réfléchi
 def reflect_ray(I, N):
     factor = 2 * dot(N, I)
     return (
