@@ -36,3 +36,6 @@ env/
 
 # Output files
 *.ppm
+/__pycache__
+__pycache__/lights.cpython-312.pyc
+*.pyc
