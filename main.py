@@ -3,6 +3,7 @@ from canvas import Canvas, canvas_to_viewport
 from utils import dot, normalize, longueur
 from raytracer import trace_ray
 from scene import Scene
+from config_loader import SceneLoader
 from object import Sphere
 from lights import AmbientLight, PointLight, DirectionalLight
 from PIL import Image 
@@ -30,28 +31,16 @@ for frame in range(num_frames):
     
     scene = Scene()
     
-    # SCÈNE 1 : Drapeau français
-
-    scene.add_object(Sphere((-2, 0, 5), 1, (0, 85, 164), 100, 0.3))             # Sphère bleue
-    scene.add_object(Sphere((0, 0, 5), 1, (255, 255, 255), 100, 0.3))           # Sphère blanche
-    scene.add_object(Sphere((2, 0, 5), 1, (239, 65, 53), 100, 0.3))             # Sphère rouge
-    scene.add_object(Sphere((0, -5001, 0), 5000, (200, 200, 200), 1000, 0.5))   # Sol gris
-
-    # SCÈNE 2
-    """
-    scene.add_object(Sphere((0, 1, 5), 1, (255, 255, 0), 100, 0.2))             # Sphère jaune
-    scene.add_object(Sphere((0, -0.5, 4), 0.5, (0, 150, 255), 100, 0.2))        # Sphère bleue
-    scene.add_object(Sphere((0, -5001, 0), 5000, (200, 200, 200), 1000, 0.5))   # Sol gris
-    """
+    # Config de la scène
+    loader = SceneLoader(scene)
+    loader.load('scene.json')
 
     # Position de la lumière point sur un cercle
     angle = (frame / num_frames) * 2 * math.pi  # Angle de 0 à 2π
     light_x = radius_light * math.cos(angle)
     light_z = radius_light * math.sin(angle)
     
-    scene.add_light(AmbientLight(0.2))           
     scene.add_light(PointLight(1.0, (light_x, height_light, light_z)))
-    scene.add_light(DirectionalLight(0.2, (1, 4, 4)))
     
     # Rendu avec la scène
     for x in range(-Cw // 2, Cw // 2):
