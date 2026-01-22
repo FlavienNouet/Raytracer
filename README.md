@@ -1,6 +1,6 @@
 # Raytracer _  Moteur de rendu par lancer de rayons
 
-Ce projet est un moteur de rendu par lancer de rayons autrement appelé ray-tracing développé en python. Il permet de générer des images de synthèses réalistes en simulant un parcours de lumière. Le programme renvoie un rendu de sphères colorés, une gestion de différentes sources de lumières et une animations au format GIF via des rendus PPM.
+Ce projet est un moteur de rendu par lancer de rayons autrement appelé ray-tracing développé en python. Il permet de générer des images de synthèses réalistes en simulant un parcours de lumière. Le programme renvoie un rendu de sphères colorées, une gestion de différentes sources de lumières et une animations au format GIF via des rendus PPM.
 
 ## User Guide
 
@@ -37,11 +37,6 @@ Ce projet est un moteur de rendu par lancer de rayons autrement appelé ray-trac
 5. **Accéder au rendu**
    Les rendus individuels sont générés au format PPM. Una animation finale regroupent les images au format PPM. 
 
-
-### Structure des données
-
-## Developer Guide
-
 ### Architecture du projet
 
 ```
@@ -67,3 +62,5 @@ Le moteur calcule ensuite l'intensité lumineuse au point d'impact avec les diff
 Je déclare sur l'honneur que le code fourni a été produit par moi-même, à l'exception des références théoriques citées ci-dessous :
 
     - L'algorithme de base et les concepts mathématiques sont inspirés de l'ouvrage "Computer Graphics from Scratch" de Gabriel Gambetta.
+
+    - La génération des PPM et du GIF.
