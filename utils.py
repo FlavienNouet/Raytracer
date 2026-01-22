@@ -1,11 +1,9 @@
 # Produit scalaire = calcul si deux vecteurs vont dans la même direction
 def dot(v, w):
-    """dot(v, w) - Produit scalaire entre deux vecteurs 3D"""
     return v[0]*w[0] + v[1]*w[1] + v[2]*w[2]
 
 # Normalisation d'un vecteur = vecteur de longueur 1
 def normalize(v):
-    """normalize(v) - Normalise un vecteur (longueur = 1)"""
     length = longueur(v)
     if length == 0:
         return (0.0, 0.0, 0.0)
@@ -13,14 +11,10 @@ def normalize(v):
 
 # Longueur d'un vecteur
 def longueur(v):
-    """longueur(v) - Norme euclidienne d'un vecteur"""
     return (v[0]**2 + v[1]**2 + v[2]**2)**0.5
 
 # Intersection avec une sphère
 def intersect_sphere(O, D, C, r):
-    """
-    O : Origine, D : Direction, C : Centre de la sphere, r : Rayon
-    """
     OC = (O[0]-C[0], O[1]-C[1], O[2]-C[2])
     a = dot(D, D)
     b = 2 * dot(OC, D)

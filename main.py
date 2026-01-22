@@ -31,14 +31,14 @@ for frame in range(num_frames):
     
     scene = Scene()
     
-    # SCÈNE PAR DÉFAUT : Drapeau français
+    # SCÈNE 1 : Drapeau français
 
     scene.add_object(Sphere((-2, 0, 5), 1, (0, 85, 164), 100, 0.3))             # Sphère bleue
     scene.add_object(Sphere((0, 0, 5), 1, (255, 255, 255), 100, 0.3))           # Sphère blanche
     scene.add_object(Sphere((2, 0, 5), 1, (239, 65, 53), 100, 0.3))             # Sphère rouge
     scene.add_object(Sphere((0, -5001, 0), 5000, (200, 200, 200), 1000, 0.5))   # Sol gris
 
-    # SCÈNE ALTERNATIVE
+    # SCÈNE 2
     """
     scene.add_object(Sphere((0, 1, 5), 1, (255, 255, 0), 100, 0.2))             # Sphère jaune
     scene.add_object(Sphere((0, -0.5, 4), 0.5, (0, 150, 255), 100, 0.2))        # Sphère bleue
