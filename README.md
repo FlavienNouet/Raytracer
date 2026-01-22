@@ -18,10 +18,13 @@ Ce projet est un moteur de rendu par lancer de rayons autrement appelé ray-trac
 
 2. **Créer un environnement virtuel**
    ```bash
+   # Windows
+   python -m venv .venv
+   .venv\Scripts\activate
+
+   # Linux/macOS
    python3 -m venv .venv
-   source .venv/bin/activate  # Sur Linux/macOS
-   # ou
-   .venv\Scripts\activate     # Sur Windows
+   source .venv/bin/activate
    ```
 
 3. **Installer les dépendances**
