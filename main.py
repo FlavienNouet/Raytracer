@@ -5,7 +5,7 @@ from raytracer import trace_ray
 from scene import Scene
 from object import Sphere
 from lights import AmbientLight, PointLight, DirectionalLight
-from PIL import Image # Pour la création du GIF
+from PIL import Image 
 import math
 import numpy as np
 
@@ -13,10 +13,9 @@ Cw = 800
 Ch = 600 
 Vw = 1.0
 Vh = 0.75
-d = 1     # Distance entre la caméra et le viewport
+d = 1
 
-# Params pour les animations de lumière
-num_frames = 5
+num_frames = 10
 radius_light = 3
 height_light = 1
 
@@ -51,7 +50,7 @@ for frame in range(num_frames):
     light_z = radius_light * math.sin(angle)
     
     scene.add_light(AmbientLight(0.2))           
-    scene.add_light(PointLight(1.0, (light_x, height_light, light_z)))   # Lumière qui tourne
+    scene.add_light(PointLight(1.0, (light_x, height_light, light_z)))
     scene.add_light(DirectionalLight(0.2, (1, 4, 4)))
     
     # Rendu avec la scène
@@ -63,7 +62,6 @@ for frame in range(num_frames):
             canvas_x = x + Cw // 2
             canvas_y = (Ch // 2 - y)
             canvas.put_pixel(canvas_x, canvas_y, couleur)
-    
     filename = f'raytracer_{frame:02d}.ppm'
     canvas.save(filename)
 
