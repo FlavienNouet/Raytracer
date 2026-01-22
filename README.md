@@ -53,6 +53,8 @@ Ce projet est un moteur de rendu par lancer de rayons autrement appelé ray-trac
 - `lights.py`      : définit les différents types de lumières.
 - `scene.py`       : gestion scène en regroupant les objets et la lumière.
 - `utils.py`       : fonctions mathméatiques utilitaires.
+- `config_loader.py`       : charge les objets configurés dans le json.
+- `scene.json`     : fichier de configuration de la scène.
 ```
 
 ## Fonctionnement technique 
