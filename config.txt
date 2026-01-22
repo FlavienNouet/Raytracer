@@ -1,0 +1,9 @@
+# Sphères aux couleurs du drapeau français + sol gris
+SPHERE center=(-2,0,5) radius=1 color=(0,85,164) specular=100 reflective=0.3
+SPHERE center=(0,0,5) radius=1 color=(255,255,255) specular=100 reflective=0.3
+SPHERE center=(2,0,5) radius=1 color=(239,65,53) specular=100 reflective=0.3
+SPHERE center=(0,-5001,0) radius=5000 color=(200,200,200) specular=1000 reflective=0.5
+
+# Lumières
+LIGHT type="ambient" intensity=0.2
+LIGHT type="directional" intensity=0.2 direction=(1,4,4)
